@@ -1,0 +1,172 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Details Task</title>
+  <style>
+    #mainscreen{
+      height: 100dvh;
+      width: 100dvw;
+      background-image: url(https://i.pinimg.com/originals/9b/1d/e6/9b1de6df13a127d53f0f77a587a33bf0.jpg);
+      background-color: crimson;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+      font-weight: bold;
+      color: darkred;
+      cursor: pointer;
+  
+    }
+    #studentform{
+      display: none;
+      padding: 20px;
+    }
+    body{
+    text-align: center;
+    color: darkblue;
+    position: relative;
+    }
+    form{
+      display: inline-block;
+      text-align: left;
+      color: maroon;
+    }
+    table{
+      display: inline-block;
+      text-align: left;
+      
+    }
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    #saveBtn {
+      background-color: limegreen;
+      padding: 6px;
+      border: none;
+      width: 230px;
+      cursor: pointer;
+    }
+    .one{
+      color: darkslategray;
+    }
+  </style>
+</head>
+<body>
+  <div onclick="showform()" id="mainscreen">
+    <h1>STUDENTS DETAILS</h1>
+  </div>
+  <div id="formsection" onclick="goback()">
+    
+  <h1>STUDENT DETAILS TASK</h1>
+  <h2>STUDENT FORM</h2>
+
+  <form id="studentForm">
+    <table border="1">
+      <tr>
+        <td>Name</td>
+        <td><input type="text" id="name"></td>
+      </tr>
+      <tr>
+        <td>Age</td>
+        <td><input type="number" id="age"></td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td>
+          <input type="radio" id="male" name="gender" value="Male"> Male
+          <input type="radio" id="female" name="gender" value="Female"> Female
+        </td>
+      </tr>
+      <tr>
+        <td>Course</td>
+        <td>
+          <select id="course">
+            <option value="JavaScript">JavaScript</option>
+            <option value="PYTHON">PYTHON</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>E-mail</td>
+        <td><input type="email" id="email"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit" id="saveBtn">Save</button></td>
+      </tr>
+    </table>
+  </form>
+  <h1>STUDENT LIST</h1>
+
+  <table border="1">
+    <thead>
+      <tr class="one">
+        <th>NAME</th>
+        <th>AGE</th>
+        <th>COURSE</th>
+        <th>GENDER</th>
+        <th>EMAIL</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody id="studentTableBody">
+      <!-- New rows will be inserted here -->
+    <!--</tbody>
+  </table>
+</div>
+
+  <script>
+   function showForm() {
+      document.getElementById("mainScreen").style.display = "none";
+      document.getElementById("formSection").style.display = "block";
+      document.getElementById("backBtn").style.display = "inline-block";
+    }
+
+    function goBack() {
+      document.getElementById("mainScreen").style.display = "flex";
+      document.getElementById("formSection").style.display = "none";
+      document.getElementById("backBtn").style.display = "none";
+    }
+    var form = document.getElementById('studentForm');
+    var tableBody = document.getElementById('studentTableBody');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var name = document.getElementById('name').value;
+      var age = document.getElementById('age').value;
+      var course = document.getElementById('course').value;
+      var email = document.getElementById('email').value;
+
+      var gender = document.getElementById('male').checked ? "Male" :
+                   document.getElementById('female').checked ? "Female" : "";
+
+      var row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${name}</td>
+        <td>${age}</td>
+        <td>${course}</td>
+        <td>${gender}</td>
+        <td>${email}</td>
+        <td><button class="delete-btn">Delete</button></td>
+      `;
+
+      row.querySelector('.delete-btn').addEventListener('click', function () {
+        row.remove();
+      });
+
+      tableBody.appendChild(row);
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>*/
