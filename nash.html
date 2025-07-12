@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Details Task</title>
   <style>
     * {
@@ -8,41 +10,40 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     html, body {
       height: 100%;
       font-family: Arial, sans-serif;
-      
     }
 
-    /* First screen (Main page) */
     #mainScreen {
       height: 100vh;
       width: 100vw;
-       background-image: url(https://i.pinimg.com/originals/9b/1d/e6/9b1de6df13a127d53f0f77a587a33bf0.jpg);
-      background-color: crimson;
+      background-image: url(https://i.pinimg.com/originals/9b/1d/e6/9b1de6df13a127d53f0f77a587a33bf0.jpg);
       background-size: cover;
       background-position: center;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      text-align: center;
+      padding: 20px;
     }
 
     #mainScreen h1 {
       background-color: rgba(0, 0, 0, 0.6);
       color: white;
-      padding: 30px 60px;
-      font-size: 48px;
+      padding: 20px 40px;
+      font-size: 6vw;
       font-weight: bold;
       border-radius: 12px;
       text-shadow: 2px 2px 5px black;
     }
 
-    /* Second screen (Form section) */
     #formSection {
       display: none;
       min-height: 100vh;
-      padding: 30px;
+      padding: 5vw 2vw;
       background-image: url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1350&q=80');
       background-size: cover;
       background-position: center;
@@ -50,57 +51,78 @@
     }
 
     table {
-      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
       margin: 20px auto;
       background-color: rgba(255, 255, 255, 0.95);
+      border-collapse: collapse;
     }
 
     table, th, td {
       border: 1px solid black;
       padding: 10px;
+      font-size: 1rem;
     }
 
     input, select {
-      width: 200px;
-      padding: 5px;
+      width: 100%;
+      padding: 8px;
+      font-size: 1rem;
     }
 
     button {
-      padding: 8px 16px;
+      padding: 10px 20px;
       background-color: green;
       color: white;
       border: none;
       cursor: pointer;
-      margin-top: 10px;
+      font-size: 1rem;
     }
 
     .delete-btn {
       background-color: red;
       color: white;
       border: none;
-      padding: 5px 10px;
+      padding: 6px 12px;
+      cursor: pointer;
     }
 
     #backBtn {
       position: fixed;
-      top: 20px;
-      left: 20px;
+      top: 10px;
+      left: 10px;
       background-color: #333;
       color: white;
       border: none;
-      padding: 8px 12px;
+      padding: 10px 16px;
+      font-size: 1rem;
       cursor: pointer;
       display: none;
+      z-index: 999;
     }
 
     h2, h3 {
       color: darkred;
       text-shadow: 1px 1px 4px black;
-      font: 1.8rem;
+      font-size: 1.8rem;
     }
-     
-    
-    
+
+    @media (max-width: 600px) {
+      #mainScreen h1 {
+        font-size: 8vw;
+        padding: 15px 25px;
+      }
+
+      table, th, td {
+        font-size: 0.9rem;
+        padding: 8px;
+      }
+
+      button, .delete-btn, #backBtn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -115,7 +137,6 @@
     <button id="backBtn" onclick="goBack()">← Back</button>
     <h2>STUDENT DETAILS FORM</h2>
 
-    <!-- Form Table -->
     <table>
       <tr>
         <td>Name</td>
@@ -153,7 +174,6 @@
       </tr>
     </table>
 
-    <!-- Student List Table -->
     <h3>STUDENT LIST</h3>
     <table id="studentTable">
       <tr>
@@ -181,28 +201,28 @@
     }
 
     function saveData() {
-      var name = document.getElementById("name").value;
-      var age = document.getElementById("age").value;
-      var course = document.getElementById("course").value;
-      var email = document.getElementById("email").value;
-      var gender = document.getElementById("male").checked ? "Male" :
-                   document.getElementById("female").checked ? "Female" : "";
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const course = document.getElementById("course").value;
+      const email = document.getElementById("email").value.trim();
+      const gender = document.getElementById("male").checked ? "Male" :
+                     document.getElementById("female").checked ? "Female" : "";
 
       if (name === "" || age === "" || gender === "" || email === "") {
         alert("Please fill all fields");
         return;
       }
 
-      var table = document.getElementById("studentTable");
-      var row = table.insertRow(-1);
+      const table = document.getElementById("studentTable");
+      const row = table.insertRow(-1);
       row.insertCell(0).innerText = name;
       row.insertCell(1).innerText = age;
       row.insertCell(2).innerText = course;
       row.insertCell(3).innerText = gender;
       row.insertCell(4).innerText = email;
 
-      var actionCell = row.insertCell(5);
-      var btn = document.createElement("button");
+      const actionCell = row.insertCell(5);
+      const btn = document.createElement("button");
       btn.innerText = "Delete";
       btn.className = "delete-btn";
       btn.onclick = function () {
@@ -210,7 +230,7 @@
       };
       actionCell.appendChild(btn);
 
-      // Clear input fields
+      // Clear input
       document.getElementById("name").value = "";
       document.getElementById("age").value = "";
       document.getElementById("male").checked = false;
@@ -218,6 +238,5 @@
       document.getElementById("email").value = "";
     }
   </script>
-
 </body>
 </html>
